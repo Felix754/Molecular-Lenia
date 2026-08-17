@@ -1,0 +1,21 @@
+# Build output directories
+bin/
+obj/
+
+# Visual Studio / VS Code user settings
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Environment-specific settings (uncomment if you keep secrets here)
+# appsettings.Development.json

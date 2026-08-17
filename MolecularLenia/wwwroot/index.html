@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Molecular Lenia</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <canvas id="simCanvas"></canvas>
+
+    <button id="togglePanelBtn" title="Settings">
+        <img src="icons/settings.svg" alt="Settings" class="btn-icon">
+    </button>
+
+    <div class="panel" id="settingsPanel">
+        <div class="panel-header">
+            <h2>Molecular Lenia</h2>
+            <button id="closePanelBtn" title="Close">
+                <span class="icon-close"></span>
+            </button>
+        </div>
+
+        <div id="statsVal">FPS: 0 | Particles: 0</div>
+
+        <div class="time-controls">
+            <button id="playPauseBtn" class="btn-primary">Pause</button>
+        </div>
+
+        <div class="control-group">
+            <label>Simulation Speed: <span id="speedVal">1.0x</span></label>
+            <input type="range" id="speedInput" min="0.2" max="3.0" step="0.1" value="1.0">
+        </div>
+
+        <hr class="divider">
+
+        <div class="control-group">
+            <label>Add Random Particles:</label>
+            <div class="flex-row">
+                <input type="number" id="batchCountInput" class="input-small" value="50" min="1" max="500">
+                <button id="spawnBatchBtn" class="btn-primary">Add</button>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="control-group">
+            <label>Spawn Molecule Type (Click):</label>
+            <select id="moleculeTypeSelect" style="display: none;">
+                <option value="-1">Random Brush</option>
+                <option value="0">Alpha (Predator)</option>
+                <option value="1">Beta (Collector)</option>
+                <option value="2">Gamma (Catalyst)</option>
+                <option value="3">Cell Fuel (Food)</option>
+                <option value="4">Pathogen (Infector)</option>
+            </select>
+
+            <div class="custom-dropdown" id="customMoleculeDropdown">
+                <div class="dropdown-selected">
+                    <img src="icons/mol-random.svg" class="mol-icon">
+                    <span>Random Brush</span>
+                </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item selected" data-value="-1">
+                        <img src="icons/mol-random.svg" class="mol-icon"> Random Brush
+                    </div>
+                    <div class="dropdown-item" data-value="0">
+                        <img src="icons/mol-alpha.svg" class="mol-icon"> Alpha (Predator)
+                    </div>
+                    <div class="dropdown-item" data-value="1">
+                        <img src="icons/mol-beta.svg" class="mol-icon"> Beta (Collector)
+                    </div>
+                    <div class="dropdown-item" data-value="2">
+                        <img src="icons/mol-gamma.svg" class="mol-icon"> Gamma (Catalyst)
+                    </div>
+                    <div class="dropdown-item" data-value="3">
+                        <img src="icons/mol-fuel.svg" class="mol-icon"> Cell Fuel (Food)
+                    </div>
+                    <div class="dropdown-item" data-value="4">
+                        <img src="icons/mol-pathogen.svg" class="mol-icon"> Pathogen (Infector)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <div class="control-group">
+            <label>Group Density: <span id="densityVal">6</span></label>
+            <input type="range" id="densityInput" min="2" max="20" value="6" step="1">
+        </div>
+
+        <div class="control-group">
+            <label>Reproduction Rate: <span id="reproductionVal">1.0x</span></label>
+            <input type="range" id="reproductionInput" min="0.2" max="3.0" step="0.1" value="1.0">
+        </div>
+
+        <hr class="divider">
+
+        <div class="control-group">
+            <label>Interaction Radius R: <span id="radiusVal">50</span></label>
+            <input type="range" id="radiusInput" min="10" max="150" value="50">
+        </div>
+
+        <div class="control-group">
+            <label>Attraction Force: <span id="attrVal">0.5</span></label>
+            <input type="range" id="attrInput" min="-1" max="2" step="0.1" value="0.5">
+        </div>
+
+        <div class="control-group">
+            <label>Repulsion Force: <span id="repVal">1.0</span></label>
+            <input type="range" id="repInput" min="0" max="3" step="0.1" value="1.0">
+        </div>
+
+        <div class="buttons-column">
+            <button id="resetSettingsBtn" class="btn-warning">Reset Settings</button>
+            <button id="clearBtn" class="btn-danger">Clear Canvas</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr@8.0.0/dist/browser/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@microsoft/signalr-protocol-msgpack@8.0.0/dist/browser/signalr-protocol-msgpack.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
